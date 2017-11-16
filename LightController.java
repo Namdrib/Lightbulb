@@ -1,4 +1,3 @@
-
 public class LightController
 {
 	public enum State {
@@ -8,8 +7,8 @@ public class LightController
 	};
 	
 	public Gui display;
-	State state;
-	int numTicks;
+	private State state;
+	private int numTicks;
 	
 	public void connect(Gui display)
 	{
@@ -18,16 +17,19 @@ public class LightController
 	
 	public void init()
 	{
-		numTicks = 0;
-		state = State.OFF;
-		display.setLightbulb("img/off.jpg");
+		setStates(0, State.OFF, "img/off.jpg");
 	}
 	
 	public void press()
 	{
-		numTicks = 0;
-		state = State.ON;
-		display.setLightbulb("img/on.jpg");
+		setStates(0, State.ON, "img/on.jpg");
+	}
+	
+	private void setStates(int numTicks, State state, String img)
+	{
+		this.numTicks = numTicks;
+		this.state = state;
+		display.setLightbulb(img);
 	}
 
 
@@ -42,17 +44,13 @@ public class LightController
 			case ON:
 				if (numTicks >= 5)
 				{
-					state = State.DIM;
-					numTicks = 0;
-					display.setLightbulb("img/dim.png");
+					setStates(0, State.DIM, "img/dim.png");
 				}
 				break;
 			case DIM:
 				if (numTicks >= 2)
 				{
-					state = State.OFF;
-					numTicks = 0;
-					display.setLightbulb("img/off.jpg");
+					setStates(0, State.OFF, "img/off.jpg");
 				}
 				break;
 			default:

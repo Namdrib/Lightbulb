@@ -1,16 +1,10 @@
-import javax.swing.AbstractButton;
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.*;
 import javax.swing.ImageIcon;
-import javax.swing.plaf.basic.BasicButtonListener;
-import java.awt.Dimension;
 import java.awt.event.*;
-import java.awt.Font;
 import java.awt.BorderLayout;
 
 // https://docs.oracle.com/javase/tutorial/uiswing/components/button.html
@@ -36,14 +30,9 @@ public class Gui
 		frame = new JFrame("Lightbulb pls");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null); // Centre the window
-		// frame.setSize(500, 500);
 		
-		// Initialise the buttons (stop/go and insert coin)
-		// TODO : icons for each button
-		ImageIcon lightbulbIcon = new ImageIcon("img/off.jpg");
+		// Initialise the button
 		button = new JButton("PRESS ME!");
-		button.setHorizontalTextPosition(AbstractButton.CENTER);
-		button.setVerticalTextPosition(AbstractButton.TOP);
 		button.setMnemonic(MouseEvent.MOUSE_CLICKED);
 		button.addActionListener(new ActionListener()
 		{
@@ -52,11 +41,8 @@ public class Gui
 				controller.press();
 			}
 		});
-		button.setEnabled(true);
 		
-		// Lightbulb here
-		lightbulb = new JLabel(lightbulbIcon);
-		
+		lightbulb = new JLabel(new ImageIcon("img/off.jpg"));
 		
 		// Put together such that they're laid out vertically
 		buttonPanel = new JPanel();
@@ -64,18 +50,14 @@ public class Gui
 		buttonPanel.add(button);
 		
 		frame.add(buttonPanel, BorderLayout.EAST);
-		// frame.add(Box.createRigidArea(new Dimension(70, 0)), BorderLayout.CENTER);
 		frame.add(lightbulb);
 		
-		// Do this last, else the buttons won't show
-		// (pack must be last)
 		frame.pack();
 		frame.setVisible(true);
 	}
 
     public void setLightbulb(String s)
 	{
-		ImageIcon lightbulbIcon = new ImageIcon(s);
-		lightbulb.setIcon(lightbulbIcon);
+		lightbulb.setIcon(new ImageIcon(s));
 	}
 }

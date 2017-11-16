@@ -1,4 +1,3 @@
-import java.lang.reflect.Constructor;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -6,10 +5,7 @@ public class main
 {
 	public static void main(String[] args) throws Exception
 	{
-		
-		// Construct the controller
 		LightController controller = new LightController();
-		// Construct the display
 		Gui display = new Gui();
 
 		// Connect the components together
@@ -25,7 +21,6 @@ public class main
 		t.scheduleAtFixedRate(ticker, 0, 1000);
 	}
 
-
 	private static class Ticker extends TimerTask
 	{
 		LightController controller;
@@ -34,7 +29,6 @@ public class main
 		{
 			this.controller = controller;
 		}
-
 
 		public void run()
 		{
