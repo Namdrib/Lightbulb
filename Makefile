@@ -1,9 +1,11 @@
 # Makefile for Lightbulb
 
-all:
-	javac *.java
-	
-main: all
+JAVAFLAGS=-Xlint
+
+all: Main.class
+
+Main.class: Main.java
+	javac Main.java $(JAVAFLAGS)
 
 clean:
 	rm -f *.class

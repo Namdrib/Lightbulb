@@ -6,8 +6,8 @@ Event-driven lightbulb
 
 ## Usage
 ### Compiling and Running
-- Compile: `make all` or `javac *.java`
-- Run: `java main`
+- Compile: `make` or `make all` or `make Main` or `javac *.java`
+- Run: `java Main`
 
 ### The program
 - Lightbulb starts OFF (signified by a black screen)
